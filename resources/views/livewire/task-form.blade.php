@@ -47,7 +47,7 @@
             </div>
             <!-- Status -->
             <div class="w-full">
-              <x-input-label for="priority" :value="__('Priority')" />
+              <x-input-label for="status" :value="__('Status')" />
               <select
                 class="w-full mt-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sms"
                 wire:model="status">

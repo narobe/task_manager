@@ -47,23 +47,23 @@
 
             @if ($editorMode == $task)
             <select
-              class="px-2 text-xs font-medium leading-none pb-1 pt-0.5 rounded-full {{ $task->status === 'completed' ? 'bg-[#22c55e] text-gray-50' : 'bg-gray-200' }} {{ $task->status === 'todo' ? 'bg-[#f97316] text-gray-50' : 'bg-gray-200' }} {{ $task->status === 'in_progress' ? 'bg-[#2563eb] text-gray-50' : 'bg-gray-200' }}"
+              class="px-2 text-xs font-medium leading-none pb-1 pt-0.5 rounded-full {{ $task->status === 'completed' ? 'bg-green-500 text-gray-50' : 'bg-gray-200' }} {{ $task->status === 'todo' ? 'bg-orange-500 text-gray-50' : 'bg-gray-200' }} {{ $task->status === 'in_progress' ? 'bg-blue-600 text-gray-50' : 'bg-gray-200' }}"
               wire:model.live="status">
-              <option class="bg-[#f97316] text-gray-50" {{ $task->status === "todo" ? 'selected' : ''}} value="todo">
+              <option class="bg-orange-500 text-gray-50" {{ $task->status === "todo" ? 'selected' : ''}} value="todo">
                 To Do
               </option>
-              <option class="bg-[#2563eb] text-gray-50" {{ $task->status === "in_progress" ? 'selected' : ''}}
+              <option class="bg-blue-600 text-gray-50" {{ $task->status === "in_progress" ? 'selected' : ''}}
                 value="in_progress">
                 In Progress
               </option>
-              <option class="bg-[#22c55e] text-gray-50" {{ $task->status === "completed" ? 'selected' : ''}}
+              <option class="bg-green-500 text-gray-50" {{ $task->status === "completed" ? 'selected' : ''}}
                 value="completed">
                 Completed
               </option>
             </select>
             @else
             <span
-              class="px-2 text-xs font-medium leading-none pb-1 pt-0.5 rounded-full {{ $task->status === 'completed' ? 'bg-[#22c55e] text-gray-50' : 'bg-gray-200' }} {{ $task->status === 'todo' ? 'bg-[#f97316] text-gray-50' : 'bg-gray-200' }} {{ $task->status === 'in_progress' ? 'bg-[#2563eb] text-gray-50' : 'bg-gray-200' }}">
+              class="px-2 text-xs font-medium leading-none pb-1 pt-0.5 rounded-full {{ $task->status === 'completed' ? 'bg-green-500 text-gray-50' : 'bg-gray-200' }} {{ $task->status === 'todo' ? 'bg-orange-500 text-gray-50' : 'bg-gray-200' }} {{ $task->status === 'in_progress' ? 'bg-blue-600 text-gray-50' : 'bg-gray-200' }}">
               {{ ucfirst($task->status) }}
             </span>
             @endif
