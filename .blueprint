@@ -1,0 +1,19 @@
+created:
+    - database/factories/UserFactory.php
+    - database/factories/TaskFactory.php
+    - database/factories/TagFactory.php
+    - database/factories/NoteFactory.php
+    - database/migrations/2025_02_18_115136_create_users_table.php
+    - database/migrations/2025_02_18_115137_create_tasks_table.php
+    - database/migrations/2025_02_18_115138_create_tags_table.php
+    - database/migrations/2025_02_18_115139_create_notes_table.php
+    - database/migrations/2025_02_18_115140_create_tag_task_table.php
+    - app/Models/User.php
+    - app/Models/Task.php
+    - app/Models/Tag.php
+    - app/Models/Note.php
+models:
+    User: { id: id, name: string, email: string, password: string, email_verified_at: 'timestamp nullable', remember_token: 'string nullable', relationships: { hasMany: 'Task, Tag, Note' } }
+    Task: { id: id, user_id: 'foreignId:users', title: string, description: 'text nullable', due_date: datetime, priority: 'enum:low,medium,high', status: 'enum:todo,in_progress,completed default:todo', relationships: { belongsTo: User, belongsToMany: Tag, hasMany: Note } }
+    Tag: { id: id, user_id: 'foreignId:users', name: string, relationships: { belongsToMany: Task, belongsTo: User } }
+    Note: { id: id, user_id: 'foreignId:users', task_id: 'foreignId:tasks', content: text, relationships: { belongsTo: 'Task, User' } }

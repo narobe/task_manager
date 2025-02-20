@@ -1,0 +1,45 @@
+models:
+  User:
+    id: id
+    name: string
+    email: string
+    password: string
+    email_verified_at: timestamp nullable
+    remember_token: string nullable
+    # tasks: hasMany Task
+    # tags: hasMany Tag
+    # notes: hasMany Note
+    relationships:
+      hasMany: Task, Tag, Note
+
+  Task:
+    id: id
+    user_id: foreignId:users
+    title: string
+    description: text nullable
+    due_date: datetime
+    priority: enum:low,medium,high
+    status: enum:todo,in_progress,completed default:todo
+    # tags: belongsToMany Tag
+    # notes: hasMany Note
+    relationships:
+      belongsTo: User
+      belongsToMany: Tag
+      hasMany: Note
+
+  Tag:
+    id: id
+    user_id: foreignId:users
+    name: string
+    # tasks: belongsToMany Task
+    relationships:
+      belongsToMany: Task
+      belongsTo: User
+
+  Note:
+    id: id
+    user_id: foreignId:users
+    task_id: foreignId:tasks
+    content: text
+    relationships:
+      belongsTo: Task, User
